@@ -21,22 +21,18 @@
 // npm init (step by step, press enter to skip)
 // npm init -y (everything default)
 
-const {readFile, writeFile} = require('fs')
+const http = require('http')
 
-const util = require('util')
-const readFilePromise = util.promisify(readFile)
-const writeFilePromise = util.promisify(writeFile)
+// const server = http.createServer((req, res) => {
+//      res.end('Welcome')
+// })
 
-const start = async () => {
-    try{
-        const first = await readFilePromise('./content/first.txt' , 'utf8');
-        const second = await readFilePromise('./content/second.txt', 'utf8');
-        await writeFilePromise('./content/result-node-native-option.txt', `THIS IS RESULT: ${first} ${second}`)
-    }
-    catch (error){
-        console.log(error);
-    }
-    
-}
+// Use Even Emitter API
+const server = http.createServer()
+// emits request event
+// subscribe to tit / listen for it / respond to it
+server.on('request', (req, res) => {
+    res.end('Welcome');
+});
 
-start()
+server.listen(5000)
