@@ -21,18 +21,26 @@
 // npm init (step by step, press enter to skip)
 // npm init -y (everything default)
 
-const http = require('http')
+// const {writeFileSync} = require('fs')
+// for (let i = 0; i < 1000; i++) {
+//     writeFileSync('./content/big.txt', `hello world ${i} \n`, {flag : 'a'});
+// }
 
-// const server = http.createServer((req, res) => {
-//      res.end('Welcome')
-// })
+const {createReadStream} = require('fs');
 
-// Use Even Emitter API
-const server = http.createServer()
-// emits request event
-// subscribe to tit / listen for it / respond to it
-server.on('request', (req, res) => {
-    res.end('Welcome');
+const stream = createReadStream('./content/big.txt', {
+    highWaterMark : 10000
 });
 
-server.listen(5000)
+// default 16kb
+// highWaterMark = control size
+// const stream = createReadStream('./content/big.txt', {highWaterMark : 10000});
+// const stream = createReadStream('./content/big.txt', {encoding : 'utf8'});
+
+stream.on('data', (result) => {
+    console.log(result);
+})
+
+stream.on('error' , (error) => {
+    console.log(error);
+})
