@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>First JavaScript</title>
+</head>
+<body>
+    <h2>My first JS Program</h2>
+    <!-- <script src="first.js"></script> -->
+    <script>
+        document.write("Hello World! This is from document.write()");
+        console.log("Hello World in log!");
+    </script>
+
+<br>
+<br>
+    <h2>Different ways to display information</h2>
+    <p id="code"></p>
+    <script>
+        document.getElementById("code").innerHTML = "Hello World! This is from the setting of the innerHTML.";
+    </script>
+     <p>Hello World! This is from within the paragraph tag in the HTML page.</p>
+
+     <br><br>
+
+     <button onclick="window.alert('This is alert!')">Click me to view a window alert</button>
+
+     <br><br>
+
+     <button onclick="document.getElementById('code').innerHTML = 'This is the second document.write()'">Click this to overwrite document write</button>
+</body>
+</html>
