@@ -22,9 +22,3 @@ app.listen(5000, () => {
 })
 
 
-
-// app.post
-// app.put
-// app.delete
-
-// app.use
